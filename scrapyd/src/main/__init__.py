@@ -7,7 +7,7 @@ from dagger import dag, function, object_type
 @object_type
 class Scrapyd:
     @function
-    def base_env(
+    def base(
         self,
         source: dagger.Directory,
         url: str | None,
@@ -50,6 +50,6 @@ class Scrapyd:
         if include_dependencies:
             args.append("--include-dependencies")
 
-        return await self.base_env(
+        return await self.base(
             source, url=url, username=username, password=password, ssh=ssh
         ).with_exec(["scrapyd-deploy", *args])
