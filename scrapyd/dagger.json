@@ -1,0 +1,5 @@
+{
+  "name": "scrapyd",
+  "sdk": "python",
+  "engineVersion": "v0.12.4"
+}
