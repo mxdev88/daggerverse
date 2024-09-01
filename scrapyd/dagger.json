@@ -1,5 +1,9 @@
 {
   "name": "scrapyd",
   "sdk": "python",
-  "engineVersion": "v0.12.4"
+  "engineVersion": "v0.12.4",
+  "exclude": [
+    "**/.venv",
+    "*/sdk"
+  ]
 }
