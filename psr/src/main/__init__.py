@@ -1,4 +1,4 @@
-"""Module for running python-semantic-release (PSR) commands."""
+"""Module for running [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/index.html) (PSR) commands."""
 
 import dagger
 from dagger import dag, function, object_type
@@ -34,10 +34,14 @@ class Psr:
         source: dagger.Directory,
         commit: bool = True,
         tag: bool = True,
+        push: bool = True,
+        vcs_release: bool = False,
+        changelog: bool = True,
+        build_metadata: str | None = None,
         version: str | None = None,
     ) -> dagger.Container:
         args = []
-
+        
         if commit:
             args.append("--commit")
         else:
@@ -47,6 +51,24 @@ class Psr:
             args.append("--tag")
         else:
             args.append("--no-tag")
+
+        if push:
+            args.append("--push")
+        else:
+            args.append("--no-push")
+
+        if changelog:
+            args.append("--changelog")
+        else:
+            args.append("--no-changelog")
+
+        if vcs_release:
+            args.append("--vcs-release")
+        else:
+            args.append("--no-vcs-release")
+
+        if build_metadata:
+            args.extend(["--build-metadata", f"{build_metadata}"])
 
         return (
             await self.base(version=version)
