@@ -9,4 +9,5 @@ List of modules
 | Module       | Description                                     |
 | :----------- | :---------------------------------------------- |
 | pre-commit   | Run pre-commit                                  |
+| psr          | Run python-semantic-release commands            |
 | scrapyd      | Interact with Scrapyd API                       |
