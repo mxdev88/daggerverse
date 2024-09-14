@@ -1,4 +1,4 @@
-"""Module for running pre-commit functions"""
+"""Module for running pre-commit commands."""
 
 import dagger
 from dagger import dag, function, object_type

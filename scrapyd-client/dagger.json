@@ -1,5 +1,5 @@
 {
-  "name": "scrapyd",
+  "name": "scrapyd-client",
   "sdk": "python",
   "engineVersion": "v0.12.4",
   "exclude": [
