@@ -1,11 +1,11 @@
-"""Module for running scrapyd"""
+"""Module for running scrapyd-client commands."""
 
 import dagger
 from dagger import dag, function, object_type
 
 
 @object_type
-class Scrapyd:
+class ScrapydClient:
     @function
     def base(
         self,

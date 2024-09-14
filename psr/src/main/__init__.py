@@ -1,4 +1,4 @@
-"""Module for running [python-semantic-release](https://python-semantic-release.readthedocs.io/en/latest/index.html) (PSR) commands."""
+"""Module for running python-semantic-release (PSR) commands."""
 
 import dagger
 from dagger import dag, function, object_type
