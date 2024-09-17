@@ -1,5 +1,6 @@
 """Module for running Poetry commands."""
 
+from typing_extensions import Self
 import dataclasses
 import dagger
 from dagger import dag, function, object_type
@@ -30,5 +31,16 @@ class Poetry:
         )
 
     @function
-    def base(self) -> dagger.Container:
+    def container(self) -> dagger.Container:
         return self.ctr
+
+    @function
+    def with_config(self, key: str, value: str) -> Self:
+        self.ctr.with_exec(
+            [
+                "sh",
+                "-c",
+                f"poetry config {key} {value}",
+            ]
+        )
+        return self
