@@ -1,0 +1,5 @@
+{
+  "name": "poetry",
+  "sdk": "python",
+  "engineVersion": "v0.13.3"
+}
