@@ -58,3 +58,19 @@ class Poetry:
             )
         )
         return self
+
+    @function
+    async def with_publish(self, repository: str| None = None) -> Self:
+        args = []
+        if repository:
+            args.extend(["--repository", f"{repository}"])
+        self.ctr = await (
+            self.ctr.with_exec(
+                [
+                    "poetry",
+                    "publish",
+                    *args
+                ]
+            )
+        )
+        return self
