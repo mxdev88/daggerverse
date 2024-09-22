@@ -35,12 +35,26 @@ class Poetry:
         return self.ctr
 
     @function
-    def with_config(self, key: str, value: str) -> Self:
-        self.ctr.with_exec(
+    async def with_config(self, key: str, value: str) -> Self:
+        self.ctr = await self.ctr.with_exec(
             [
                 "sh",
                 "-c",
                 f"poetry config {key} {value}",
             ]
+        )
+        return self
+
+    @function
+    async def with_build(self, source: dagger.Directory) -> Self:
+        self.ctr = await (
+            self.ctr.with_directory("/src", source, exclude=[".venv"])
+            .with_workdir("/src")
+            .with_exec(
+                [
+                    "poetry",
+                    "build",
+                ]
+            )
         )
         return self
