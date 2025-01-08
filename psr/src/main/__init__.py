@@ -27,11 +27,9 @@ class Psr:
             )
         )
 
-
     @function
     def container(self) -> dagger.Container:
         return self.ctr
-
 
     @function
     async def version(
@@ -52,13 +50,13 @@ class Psr:
 
         if noop:
             global_args.append("--noop")
-        
+
         if strict:
             global_args.append("--strict")
-        
+
         if config:
             global_args.extend(["--config", f"{config}"])
-        
+
         if commit:
             cmd_args.append("--commit")
         else:
@@ -88,8 +86,7 @@ class Psr:
             cmd_args.extend(["--build-metadata", f"{build_metadata}"])
 
         return (
-            await self.ctr
-            .with_directory("/src", source, exclude=[".venv"])
+            await self.ctr.with_directory("/src", source, exclude=[".venv"])
             .with_workdir("/src")
             .with_exec(["semantic-release", *global_args, "version", *cmd_args])
         )

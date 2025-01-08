@@ -2,7 +2,7 @@
 
 Collection of [dagger](https://dagger.io/) modules.
 
-## Modules 
+## Modules
 
 List of modules
 
