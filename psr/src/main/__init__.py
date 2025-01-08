@@ -12,7 +12,7 @@ class Psr:
     def __post_init__(self, version: str | None = None):
         psr_version_args = ""
         if version:
-            psr_version_args = f"--version {version}"
+            psr_version_args = f"=={version}"
 
         self.ctr = (
             dag.container()
