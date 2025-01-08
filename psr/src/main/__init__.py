@@ -8,7 +8,6 @@ from dagger import dag, function, object_type
 @object_type
 class Psr:
     ctr: dagger.Container = dataclasses.field(init=False)
-    version: dataclasses.InitVar[str | None] = None
 
     def __post_init__(self, version: str | None = None):
         psr_version_args = ""
